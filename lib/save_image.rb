@@ -3,6 +3,14 @@ require 'rest-client'
 
 class SaveImage
 
+	attr_accessor	:url, :parsed_html
+
+	def initialize(url)
+		@url = url
+		@parsed_html = nil
+	end
+
+
 	def self.save_images(url)
 		successfully_saved_img = 0
 		
