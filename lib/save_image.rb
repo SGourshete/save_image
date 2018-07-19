@@ -5,16 +5,16 @@ class SaveImage
 
 	attr_accessor	:url, :parsed_html
 
-	def initialize(url)
-		@url = url
-		@parsed_html = nil
+	def initialize(link)
+		@url = link
+		@parsed_html = nil	
 	end
 
 
 	def self.save_images(url)
 		successfully_saved_img = 0
 		
-		html   = RestClient.get("#{url}").body
+		#{url}").body
 		parsed = Nokogiri::HTML.parse(html)
  
 		image_tags = parsed.css("img")
@@ -39,5 +39,17 @@ class SaveImage
 		end
 		successfully_saved_img
 	end
+
+
+private
+
+	def parse_html
+		html   = RestClient.get("#{url}").body
+		@parsed_html = Nokogiri::HTML.parse(html)
+	end
+
+	def get_h1_tags
+		@parsed_html.css("h1")
+	end	
 
 end
