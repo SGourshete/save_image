@@ -7,7 +7,7 @@ class SaveImage
 
 	def initialize(link)
 		@url = link
-		@parsed_html = nil	
+		@parsed_html = link.nil?  nil	: parse_html
 	end
 
 
@@ -41,11 +41,17 @@ class SaveImage
 	end
 
 
+	def snapshot
+		h1_tag = get_h1_tags
+		p_tag = first_p_tag
+	end
+
+
 private
 
 	def parse_html
 		html   = RestClient.get("#{url}").body
-		@parsed_html = Nokogiri::HTML.parse(html)
+		Nokogiri::HTML.parse(html)
 	end
 
 	def get_h1_tags
