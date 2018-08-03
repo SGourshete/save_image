@@ -50,6 +50,10 @@ private
 
 	def get_h1_tags
 		@parsed_html.css("h1")
-	end	
+	end
+
+	def first_p_tag
+		@parsed_html.css("p").first
+	end
 
 end
