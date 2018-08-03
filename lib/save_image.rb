@@ -44,6 +44,7 @@ class SaveImage
 	def snapshot
 		h1_tag = get_h1_tags
 		p_tag = first_p_tag
+		result = h1_tag + p_tag
 	end
 
 
