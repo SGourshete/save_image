@@ -55,6 +55,15 @@ private
 		Nokogiri::HTML.parse(html)
 	end
 
+	def youtube_video_image(size)
+		regex = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?[A-Za-z0-9_=-]+&v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/
+		url.gsub(regex) do
+			youtube_video_id = $4
+			img = "https://img.youtube.com/vi/#{youtube_video_id}/#{size}.jpg"
+		end
+		img
+	end	
+
 	def get_h1_tags
 		@parsed_html.css("h1")
 	end
