@@ -55,7 +55,7 @@ private
 		Nokogiri::HTML.parse(html)
 	end
 
-	def youtube_video_image(size)
+	def youtube_video_image(size = "sddefault")
 		regex = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?[A-Za-z0-9_=-]+&v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/
 		url.gsub(regex) do
 			youtube_video_id = $4
